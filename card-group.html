@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3 - Task 2: Card Group (CSS Media Queries)</title>
+    <link rel="stylesheet" href="css/card-group.css">
+    <link rel="stylesheet" href="css/assignment5.css">
+</head>
+<body>
+<div class="wrap">
+    <span class="tag">Assignment 3 &middot; Part 1 &middot; Task 2</span>
+    <h1>Card Group</h1>
+    <p class="lead">
+        Three cards, laid out with plain CSS media queries only (no
+        Bootstrap grid on this page). Resize the window to see the layout
+        change: 3 across on desktop, 2 per row on tablet, stacked on mobile.
+    </p>
+
+    <div class="card-group-mq">
+        <article class="card-mq">
+            <img src="images/chocolate-cake.jpg" alt="Slice of layered chocolate cake">
+            <div class="body">
+                <span class="price">$15</span>
+                <h3>Chocolate Cake</h3>
+                <p>Rich layers of chocolate sponge and cream, finished with chocolate shavings.</p>
+            </div>
+        </article>
+        <article class="card-mq">
+            <img src="images/croissant.jpg" alt="Croissant filled with cream and strawberries">
+            <div class="body">
+                <span class="price">$6</span>
+                <h3>Strawberry Croissant</h3>
+                <p>A flaky, buttery croissant filled with sweet cream and fresh strawberries.</p>
+            </div>
+        </article>
+        <article class="card-mq">
+            <img src="images/latte.jpg" alt="Latte with heart-shaped foam art">
+            <div class="body">
+                <span class="price">Hot drink</span>
+                <h3>Signature Latte</h3>
+                <p>Smooth espresso with steamed milk - the perfect partner for any pastry.</p>
+            </div>
+        </article>
+    </div>
+
+    <div class="note">
+        <strong>How it works:</strong> <code>.card-group-mq</code> is a flex
+        container with <code>flex-wrap: wrap</code>. Each card starts at
+        <code>flex: 1 1 100%</code> (full width = stacked, mobile default).
+        A <code>@media (min-width: 600px)</code> query switches that to
+        <code>50%</code> (two per row, tablet), and a
+        <code>@media (min-width: 1000px)</code> query switches it again to
+        <code>33.333%</code> (three per row, desktop).
+    </div>
+
+    <p style="margin-top:24px;"><a href="index.html">&larr; Back to H&amp;M Bakery home</a></p>
+</div>
+<div class="bakery-modal" id="subscribe-modal" hidden><div class="bakery-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="subscribe-title"><button class="bakery-modal-close" type="button" id="close-subscribe" aria-label="Close subscription form">&times;</button><h2 id="subscribe-title">Subscribe to H&amp;M Bakery</h2><p>Get updates about our cakes and pastries.</p><form id="subscribe-form" novalidate><label for="subscribe-email" class="form-label">Email address</label><input id="subscribe-email" class="form-control" type="email" autocomplete="email" placeholder="you@example.com" required><p id="subscribe-feedback" class="form-feedback" aria-live="polite"></p><button type="submit" class="btn btn-primary">Subscribe</button></form></div></div>
+<script src="js/script.js" defer></script>
+<script src="js/assignment5.js" defer></script>
+</body>
+</html>

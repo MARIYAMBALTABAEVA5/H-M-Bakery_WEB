@@ -1,0 +1,64 @@
+/* ==========================================================
+   ASSIGNMENT 3 / PART 1 / TASK 1 — RESPONSIVE TYPOGRAPHY
+   Plain CSS media queries only. No Bootstrap on this page.
+   Breakpoints: mobile (default) -> tablet (600px+) -> desktop (1024px+)
+   ========================================================== */
+:root {
+    --crust: #8B4513;
+    --caramel: #CD853F;
+    --cream: #fff8f0;
+    --ink: #3a2a1e;
+}
+* { box-sizing: border-box; }
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    margin: 0;
+    padding: 32px 20px;
+    line-height: 1.6;
+}
+.wrap { max-width: 760px; margin: 0 auto; }
+
+.tag {
+    display: inline-block;
+    background: var(--crust);
+    color: #fff;
+    padding: 4px 14px;
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+h1, h2 { font-family: Georgia, "Times New Roman", serif; color: var(--crust); }
+a { color: var(--crust); }
+
+/* ---------- Base sizes = MOBILE (small screens, below 600px) ---------- */
+h1 { font-size: 1.6rem; margin: 0 0 .4em; }
+h2 { font-size: 1.15rem; margin: 1.4em 0 .4em; }
+p  { font-size: .95rem; margin: 0 0 1em; }
+
+/* ---------- TABLET (600px and up): medium font sizes ---------- */
+@media (min-width: 600px) {
+    h1 { font-size: 2.3rem; }
+    h2 { font-size: 1.5rem; }
+    p  { font-size: 1.05rem; }
+}
+
+/* ---------- DESKTOP (1024px and up): larger font sizes ---------- */
+@media (min-width: 1024px) {
+    h1 { font-size: 3rem; }
+    h2 { font-size: 1.9rem; }
+    p  { font-size: 1.15rem; }
+}
+
+.note {
+    margin-top: 2em;
+    padding: 14px 18px;
+    background: #fff;
+    border: 1px solid var(--caramel);
+    border-radius: 10px;
+    font-size: .9rem;
+}

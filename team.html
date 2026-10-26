@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H&amp;M Bakery - Team</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/assignment5.css">
+</head>
+<body>
+
+<div class="page">
+
+    <header class="site-header-area">
+        <nav class="navbar navbar-expand-lg navbar-dark bakery-navbar sticky-top">
+            <div class="container-fluid px-3 px-lg-4">
+                <a class="navbar-brand" href="index.html" aria-label="H&amp;M Bakery home">
+                    <span class="logo-mark">H&amp;M</span>
+                    <span>H&amp;M Bakery</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#mainNav" aria-controls="mainNav"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-2">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+                        <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="team.html">Team</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <aside class="sidebar">
+        <section class="side-box">
+            <h3>Opening Hours</h3>
+            <ul class="hours">
+                <li><span>Mon - Fri</span><span>7:30 - 20:00</span></li>
+                <li><span>Saturday</span><span>8:00 - 21:00</span></li>
+                <li><span>Sunday</span><span>8:00 - 18:00</span></li>
+            </ul>
+        </section>
+        <section class="side-box side-special">
+            <h3>Fresh Today</h3>
+            <p>Strawberry cream croissants are baked every morning. Come early - they go fast!</p>
+            <a class="btn btn-light" href="products.html">See products</a>
+        </section>
+    </aside>
+
+    <main class="content">
+        <section class="panel hero">
+            <div class="hero-media">
+                <img src="images/team-bakery.jpg" alt="Illustration of the H&amp;M Bakery shop front" style="height:380px; object-position:center 30%">
+            </div>
+            <div class="hero-text">
+                <h2>About Our Team</h2>
+                <h3>H&amp;M Bakery</h3>
+                <p>
+                    H&amp;M Bakery was founded by two passionate pastry professionals who share a
+                    love for baking and creating unforgettable desserts. Our mission is to
+                    bring happiness to every customer through fresh, high-quality products and
+                    excellent service.
+                </p>
+            </div>
+        </section>
+
+        <!-- ASSIGNMENT 3 / TASK 3 — BOOTSTRAP GRID, two columns (col-lg-6)
+             ASSIGNMENT 3 / TASK 8 — BOOTSTRAP CARDS
+             ASSIGNMENT 3 / TASK 4 — SPACING UTILITIES -->
+        <section class="panel">
+            <h2 class="mb-4">Meet the Bakers</h2>
+            <div class="row row-cols-1 row-cols-lg-2 g-4">
+                <div class="col">
+                    <div class="card bs-card h-100 text-center p-3 p-lg-4">
+                        <div class="avatar mx-auto">H</div>
+                        <div class="card-body">
+                            <h3 class="card-title h5">Hadiya Sarwari</h3>
+                            <p class="role">Co-founder &amp; Master Baker</p>
+                            <p class="card-text">
+                                Hadiya completed advanced bakery and artisan bread courses in Italy and has
+                                more than 5 years of experience in creating fresh bread, croissants, and
+                                pastries. Her passion for baking and commitment to quality make every
+                                product fresh and delicious.
+                            </p>
+                            <a class="btn btn-primary" href="contact.html">Say hello</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bs-card h-100 text-center p-3 p-lg-4">
+                        <div class="avatar mx-auto">M</div>
+                        <div class="card-body">
+                            <h3 class="card-title h5">Mariyam Baltabaeva</h3>
+                            <p class="role">Co-founder &amp; Head Pastry Chef</p>
+                            <p class="card-text">
+                                Mariyam completed professional pastry training in Paris and specializes in
+                                cakes, desserts, and modern bakery decoration. Her creative recipes and
+                                attention to detail have helped H&amp;M Bakery become one of the most popular
+                                bakery brands among dessert lovers.
+                            </p>
+                            <a class="btn btn-primary" href="contact.html">Say hello</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div>
+            <p><strong>Team H&amp;M Bakery</strong></p>
+            <p>Members: Mariyam &amp; Hadiya</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer navigation">
+            <a href="menu.html">Menu</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="footer-interactive"><button type="button" class="btn btn-sm btn-outline-light" id="change-color">Change Background Color</button> <button type="button" class="btn btn-sm btn-outline-light" id="open-subscribe">Subscribe</button><span>Current time: <time id="live-clock">Loading...</time></span></div>
+    </footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<div class="bakery-modal" id="subscribe-modal" hidden><div class="bakery-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="subscribe-title"><button class="bakery-modal-close" type="button" id="close-subscribe" aria-label="Close subscription form">&times;</button><h2 id="subscribe-title">Subscribe to H&amp;M Bakery</h2><p>Get updates about our cakes and pastries.</p><form id="subscribe-form" novalidate><label for="subscribe-email" class="form-label">Email address</label><input id="subscribe-email" class="form-control" type="email" autocomplete="email" placeholder="you@example.com" required><p id="subscribe-feedback" class="form-feedback" aria-live="polite"></p><button type="submit" class="btn btn-primary">Subscribe</button></form></div></div>
+<script src="js/script.js" defer></script>
+<script src="js/assignment5.js" defer></script>
+
+<!-- Assignment 5: shared interactive shopping cart -->
+<aside id="a5-cart-drawer" class="a5-cart-drawer" hidden aria-label="Shopping cart" role="dialog" aria-modal="false">
+  <div class="a5-cart-head"><h2>Your Cart</h2><button type="button" class="a5-btn" id="a5-cart-close" aria-label="Close cart">✕</button></div>
+  <div id="a5-cart-lines" aria-live="polite"></div>
+  <p id="a5-cart-total" class="a5-cart-total"></p>
+  <button type="button" class="a5-btn" id="a5-cart-clear">Clear cart</button>
+  <p class="a5-cart-note">Demo cart only — no payment or real order is placed.</p>
+</aside>
+<button type="button" id="a5-cart-toggle" class="a5-cart-floating" aria-controls="a5-cart-drawer" aria-expanded="false">🛒 Cart <span id="a5-cart-count">0</span></button>
+<div id="a5-toast" class="a5-toast" role="status" aria-live="polite"></div>
+</body>
+</html>

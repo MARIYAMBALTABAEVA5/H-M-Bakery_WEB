@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3 - Task 1: Responsive Typography</title>
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/assignment5.css">
+</head>
+<body>
+<div class="wrap">
+    <span class="tag">Assignment 3 &middot; Part 1 &middot; Task 1</span>
+    <h1>Responsive Typography</h1>
+    <p>
+        This page has one job: show that heading and paragraph sizes change at
+        three breakpoints using nothing but plain CSS <code>@media</code> queries
+        (no Bootstrap on this page). Resize the browser window, or open it on a
+        phone and a tablet, to see the text grow.
+    </p>
+
+    <h2>Mobile (below 600px)</h2>
+    <p>
+        On a narrow phone screen, the heading and body text start small and
+        compact so nothing wraps awkwardly or overflows the viewport.
+    </p>
+
+    <h2>Tablet (600px and up)</h2>
+    <p>
+        Once the screen is at least 600px wide, the font sizes step up to a
+        medium size, taking advantage of the extra horizontal space a tablet
+        or a small laptop window provides.
+    </p>
+
+    <h2>Desktop (1024px and up)</h2>
+    <p>
+        On a full desktop monitor (1024px and wider) the headings and
+        paragraph text scale up once more to their largest size, matching the
+        greater screen space and typical reading distance of a desktop
+        display.
+    </p>
+
+    <div class="note">
+        <strong>How it works:</strong> the base CSS rules (no media query)
+        define the mobile sizes. A <code>@media (min-width: 600px)</code>
+        query overrides them for tablets, and a
+        <code>@media (min-width: 1024px)</code> query overrides them again
+        for desktop — a mobile-first approach.
+    </div>
+
+    <p style="margin-top:2em;"><a href="index.html">&larr; Back to H&amp;M Bakery home</a></p>
+</div>
+<div class="bakery-modal" id="subscribe-modal" hidden><div class="bakery-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="subscribe-title"><button class="bakery-modal-close" type="button" id="close-subscribe" aria-label="Close subscription form">&times;</button><h2 id="subscribe-title">Subscribe to H&amp;M Bakery</h2><p>Get updates about our cakes and pastries.</p><form id="subscribe-form" novalidate><label for="subscribe-email" class="form-label">Email address</label><input id="subscribe-email" class="form-control" type="email" autocomplete="email" placeholder="you@example.com" required><p id="subscribe-feedback" class="form-feedback" aria-live="polite"></p><button type="submit" class="btn btn-primary">Subscribe</button></form></div></div>
+<script src="js/script.js" defer></script>
+<script src="js/assignment5.js" defer></script>
+</body>
+</html>

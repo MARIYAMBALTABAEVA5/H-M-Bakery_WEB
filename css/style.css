@@ -1,0 +1,565 @@
+/* ==========================================================
+   H&M Bakery — Assignment 2: Flexbox & Grid
+   Part 1: Flexbox  -> header/nav, card rows, small components
+   Part 2: Grid     -> page layout (grid areas), image gallery
+   ========================================================== */
+
+:root {
+    --crust: #8B4513;        /* primary brown (from Assignment 1) */
+    --crust-dark: #5e2f0d;
+    --caramel: #CD853F;
+    --sienna: #A0522D;
+    --sand: #D2B48C;
+    --cream: #fff8f0;
+    --paper: #ffffff;
+    --ink: #3a2a1e;
+    --berry: #b23a55;        /* strawberry accent from the photos */
+    --radius: 14px;
+    --gap: 24px;
+    --shadow: 0 2px 6px rgba(94, 47, 13, .10);
+    --shadow-hover: 0 14px 28px rgba(94, 47, 13, .22);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--cream);
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--crust);
+    line-height: 1.25;
+    margin: 0 0 .5em;
+}
+h2 { font-size: 1.7rem; }
+h3 { font-size: 1.2rem; }
+p  { margin: 0 0 1em; }
+img { max-width: 100%; display: block; }
+
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible, .gallery-item:focus-visible {
+    outline: 3px solid var(--berry);
+    outline-offset: 2px;
+}
+
+/* ==========================================================
+   PART 2 / TASK 3 — PAGE LAYOUT WITH GRID AREAS
+   The parent (.page) is a grid container with named areas.
+   ========================================================== */
+.page {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);   /* sidebar | main */
+    grid-template-rows: auto 1fr auto;             /* header | content | footer */
+    grid-template-areas:
+        "header  header"
+        "sidebar main"
+        "footer  footer";
+    gap: var(--gap);
+    max-width: 1240px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 0 20px 20px;
+}
+
+.site-header-area { grid-area: header; z-index: 20; }
+.sidebar          { grid-area: sidebar; }
+.content          { grid-area: main; min-width: 0; }
+.site-footer      { grid-area: footer; }
+
+/* ==========================================================
+   ASSIGNMENT 3 / TASK 5 — BOOTSTRAP NAVIGATION BAR
+   The Assignment 2 custom flex header has been REPLACED by
+   Bootstrap's own <nav class="navbar"> component (see the HTML).
+   These rules only theme Bootstrap's default look with the
+   bakery colors — the responsive collapse/hamburger behaviour
+   itself is 100% Bootstrap (navbar-expand-lg + navbar-toggler).
+   ========================================================== */
+.logo-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--cream);
+    color: var(--crust);
+    font: bold 14px Georgia, serif;
+    border: 3px solid var(--caramel);
+    flex: none;
+}
+
+.bakery-navbar {
+    background-color: var(--crust) !important;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    box-shadow: 0 4px 14px rgba(94, 47, 13, .25);
+    border-radius: 0 0 var(--radius) var(--radius);
+}
+.bakery-navbar .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font: bold 1.4rem Georgia, "Times New Roman", serif;
+}
+.bakery-navbar .nav-link {
+    color: rgba(255, 255, 255, .92) !important;
+    font-weight: 600;
+    border-radius: 999px;
+    transition: background-color .2s, transform .2s;
+}
+.bakery-navbar .nav-link:hover,
+.bakery-navbar .nav-link:focus {
+    background-color: var(--caramel);
+    color: #fff !important;
+    transform: translateY(-1px);
+}
+.bakery-navbar .nav-link.active {
+    background-color: var(--cream);
+    color: var(--crust) !important;
+    font-weight: bold;
+}
+.bakery-navbar .navbar-toggler {
+    border-color: rgba(255, 255, 255, .6);
+}
+.bakery-navbar .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+/* ---------- Sidebar (grid area "sidebar") ---------- */
+.sidebar {
+    align-self: start;
+    position: sticky;
+    top: 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.side-box {
+    background: var(--paper);
+    border: 2px solid var(--sand);
+    border-radius: var(--radius);
+    padding: 18px;
+}
+.side-box h3 { font-size: 1.05rem; }
+.hours { list-style: none; margin: 0; padding: 0; }
+.hours li {
+    display: flex;                       /* label left, time right */
+    justify-content: space-between;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--sand);
+    font-size: .93rem;
+}
+.hours li:last-child { border-bottom: 0; }
+.side-special { background: var(--crust); border-color: var(--crust); color: white; }
+.side-special h3 { color: white; }
+.side-special p  { font-size: .93rem; margin-bottom: 14px; }
+
+/* ---------- Main content ---------- */
+.content { display: flex; flex-direction: column; gap: var(--gap); }
+
+.panel {
+    background: var(--paper);
+    border: 2px solid var(--sand);
+    border-radius: var(--radius);
+    padding: 28px;
+}
+
+/* ---------- Buttons ---------- */
+.btn, button {
+    display: inline-block;
+    background-color: var(--crust);
+    color: white;
+    border: none;
+    padding: 11px 20px;
+    border-radius: 8px;
+    font: bold .95rem Arial, sans-serif;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color .2s, transform .2s;
+}
+.btn:hover, button:hover { background-color: var(--caramel); }
+.btn-light { background: transparent; color: var(--crust); border: 2px solid var(--crust); padding: 9px 18px; }
+.btn-light:hover { background: var(--crust); color: white; }
+
+/* ==========================================================
+   ASSIGNMENT 3 / TASK 6 — BOOTSTRAP BUTTONS
+   Theme Bootstrap's own button classes with the bakery colors
+   using Bootstrap 5.3's CSS-variable API (no !important needed,
+   still 100% Bootstrap btn classes in the HTML).
+   ========================================================== */
+.btn-primary {
+    --bs-btn-bg: var(--crust);
+    --bs-btn-border-color: var(--crust);
+    --bs-btn-hover-bg: var(--caramel);
+    --bs-btn-hover-border-color: var(--caramel);
+    --bs-btn-active-bg: var(--sienna);
+    --bs-btn-active-border-color: var(--sienna);
+}
+.btn-outline-primary {
+    --bs-btn-color: var(--crust);
+    --bs-btn-border-color: var(--crust);
+    --bs-btn-hover-bg: var(--crust);
+    --bs-btn-hover-border-color: var(--crust);
+    --bs-btn-active-bg: var(--sienna);
+}
+.btn-secondary {
+    --bs-btn-bg: var(--berry);
+    --bs-btn-border-color: var(--berry);
+    --bs-btn-hover-bg: #8f2c43;
+    --bs-btn-hover-border-color: #8f2c43;
+}
+.btn-outline-secondary {
+    --bs-btn-color: var(--berry);
+    --bs-btn-border-color: var(--berry);
+    --bs-btn-hover-bg: var(--berry);
+    --bs-btn-hover-border-color: var(--berry);
+}
+
+/* ---------- Hero (flexbox: text + image side by side) ---------- */
+.hero {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+.hero-text  { flex: 1 1 300px; }
+.hero-media { flex: 1 1 280px; }
+.hero-media img { width: 100%; height: 320px; object-fit: cover; border-radius: var(--radius); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.lead { font-size: 1.05rem; }
+
+/* ---------- Feature list (flexbox small components) ---------- */
+.features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.features li {
+    flex: 1 1 170px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-weight: bold;
+    color: var(--crust);
+}
+.features .dot {
+    flex: none;
+    width: 34px; height: 34px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    background: var(--crust);
+    color: white;
+    font-size: .95rem;
+}
+
+/* ==========================================================
+   PART 1 / TASK 2 — CARD ROW (Flexbox)
+   ========================================================== */
+.card-row {
+    display: flex;                       /* cards appear in a row        */
+    flex-wrap: wrap;                     /* wrap on smaller screens      */
+    justify-content: center;
+    align-items: stretch;                /* equal height cards           */
+    gap: var(--gap);                     /* consistent gap               */
+}
+.card {
+    flex: 1 1 240px;
+    max-width: 290px;
+    display: flex;                       /* card = flex column           */
+    flex-direction: column;
+    background: var(--paper);
+    border: 2px solid var(--sand);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+.card:hover {                            /* hover effect: lift + shadow  */
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+}
+.card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center 35%;
+}
+.card-body {
+    flex: 1;                             /* body fills leftover height   */
+    display: flex;
+    flex-direction: column;
+    padding: 18px;
+}
+.card-body h3 { margin-bottom: 6px; }
+.card-body p  { font-size: .95rem; }
+.card-body .btn { margin-top: auto; }    /* button always sticks to the bottom */
+.price {
+    align-self: flex-start;
+    background: var(--berry);
+    color: white;
+    font-weight: bold;
+    font-size: .85rem;
+    padding: 3px 12px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+}
+
+/* Two-column info panels (menu lists, contact info) */
+.info-row { display: flex; flex-wrap: wrap; gap: var(--gap); }
+.info-row > * { flex: 1 1 240px; }
+.info-box {
+    background: var(--cream);
+    border: 1px solid var(--sand);
+    border-radius: 10px;
+    padding: 18px 22px;
+}
+.info-box ul, .info-box ol { margin: 0; padding-left: 20px; line-height: 1.9; }
+
+/* Team avatar */
+.avatar {
+    width: 84px; height: 84px;
+    margin-bottom: 14px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    background: var(--crust);
+    color: white;
+    font: bold 1.8rem Georgia, serif;
+    border: 4px solid var(--caramel);
+}
+.member-card { padding: 24px; align-items: center; text-align: center; max-width: 340px; }
+.member-card .card-body { padding: 0; align-items: center; }
+.role { color: var(--berry); font-weight: bold; margin-bottom: 10px; }
+
+/* ---------- Table (products) ---------- */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th { background-color: var(--crust); color: white; }
+th, td { border: 1px solid #ccc; padding: 12px; text-align: center; }
+tbody tr:nth-child(even) { background: var(--cream); }
+tbody tr:hover { background: #f5e3cc; }
+
+/* ---------- Contact form ---------- */
+#contact-form { display: flex; flex-direction: column; gap: 16px; max-width: 640px; }
+.form-row { display: flex; flex-wrap: wrap; gap: 16px; }
+.form-row > .field { flex: 1 1 240px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-weight: bold; color: var(--crust); }
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--sand);
+    border-radius: 6px;
+    font: inherit;
+    background: white;
+}
+#contact-form button { align-self: flex-start; }
+
+/* ==========================================================
+   PART 2 / TASK 4 — IMAGE GALLERY (CSS Grid)
+   ========================================================== */
+.gallery {
+    display: grid;                                   /* grid container */
+    grid-template-columns: repeat(4, 1fr);           /* equal columns  */
+    grid-template-rows: repeat(3, 1fr);              /* equal rows     */
+    gap: 14px;                                       /* consistent spacing */
+}
+.gallery-item {
+    position: relative;
+    margin: 0;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 2px solid var(--sand);
+    background: var(--sand);
+}
+.gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform .4s ease;
+}
+.gallery-item figcaption {                           /* caption overlay */
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 14px;
+    color: white;
+    font-weight: bold;
+    background: linear-gradient(to top, rgba(59, 28, 8, .88), rgba(59, 28, 8, .15) 65%, transparent);
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity .3s ease, transform .3s ease;
+}
+.gallery-item figcaption small { font-weight: normal; opacity: .85; margin-top: 2px; }
+.gallery-item:hover figcaption,
+.gallery-item:focus-within figcaption,
+.gallery-item:focus figcaption { opacity: 1; transform: none; }
+.gallery-item:hover img { transform: scale(1.08); }
+
+/* ---------- Footer (grid area "footer", flexbox inside) ---------- */
+.site-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    background-color: var(--crust);
+    color: white;
+    padding: 18px 28px;
+    border-radius: var(--radius);
+}
+.site-footer p { margin: 0; }
+.footer-links { display: flex; gap: 16px; }
+.footer-links a { color: white; }
+
+/* ==========================================================
+   ASSIGNMENT 3 / TASK 8 — BOOTSTRAP CARDS
+   Applied to Bootstrap's own .card component (index, menu,
+   products and team pages), grouped with .row-cols / card-group.
+   ========================================================== */
+.bs-card {
+    border-color: var(--sand);
+    transition: transform .25s ease, box-shadow .25s ease;
+    height: 100%;
+}
+.bs-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+.bs-card img { aspect-ratio: 4 / 3; object-fit: cover; }
+.bs-card .card-title { color: var(--crust); font-family: Georgia, serif; }
+.bs-price {
+    display: inline-block;
+    background: var(--berry);
+    color: #fff;
+    font-weight: bold;
+    font-size: .8rem;
+    padding: 3px 12px;
+    border-radius: 999px;
+}
+
+/* ==========================================================
+   ASSIGNMENT 3 / TASK 7 — BOOTSTRAP CAROUSEL
+   ========================================================== */
+.bakery-carousel .carousel-item img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    border-radius: var(--radius);
+}
+.bakery-carousel .carousel-caption {
+    background: rgba(59, 28, 8, .55);
+    border-radius: 10px;
+    padding: 8px 18px;
+}
+.bakery-carousel .carousel-control-prev-icon,
+.bakery-carousel .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, .35);
+    border-radius: 50%;
+    padding: 18px;
+}
+.bakery-carousel .carousel-indicators [data-bs-target] {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--cream);
+    border: 2px solid var(--crust);
+    opacity: .85;
+    margin: 0 5px;
+}
+.bakery-carousel .carousel-indicators .active {
+    background-color: var(--caramel);
+    opacity: 1;
+}
+@media (max-width: 560px) {
+    .bakery-carousel .carousel-item img { height: 260px; }
+}
+
+/* ==========================================================
+   ASSIGNMENT 3 / TASK 9 — RESPONSIVE FORM (Bootstrap)
+   ========================================================== */
+.bs-form .form-label { color: var(--crust); font-weight: bold; }
+.bs-form .form-control:focus,
+.bs-form .form-select:focus {
+    border-color: var(--caramel);
+    box-shadow: 0 0 0 .2rem rgba(205, 133, 63, .35);
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 1000px) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 860px) {
+    /* the grid areas are re-arranged: one column, sidebar under main */
+    .page {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto;
+        grid-template-areas:
+            "header"
+            "main"
+            "sidebar"
+            "footer";
+    }
+    .sidebar { position: static; }
+}
+
+@media (max-width: 720px) {
+    .panel { padding: 20px; }
+    .site-footer { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 560px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        gap: 10px;
+    }
+}
+
+/* Touch screens have no hover: keep captions visible */
+@media (hover: none) {
+    .gallery-item figcaption { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+}
+
+/* Assignment 4 interactive components */
+body { transition: background-color .35s ease; }
+.js-feature { margin-top: 1.5rem; }
+.feature-actions { display:flex; gap: .75rem; flex-wrap:wrap; }
+.faq-item { border-bottom: 1px solid #d7c9bc; }
+.faq-question { width:100%; padding:1rem .25rem; background:transparent; border:0; color:inherit; display:flex; justify-content:space-between; gap:1rem; text-align:left; font-weight:600; cursor:pointer; }
+.faq-question:focus-visible { outline:3px solid #925c45; outline-offset:2px; }
+.faq-answer { opacity:0; max-height:0; overflow:hidden; transition:opacity .25s ease, max-height .25s ease; }
+.faq-answer.expanded { opacity:1; max-height:12rem; }
+.faq-answer p { padding:.25rem .5rem 1rem; margin:0; }
+.bakery-modal[hidden], .faq-answer[hidden] { display:none !important; }
+.bakery-modal { position:fixed; inset:0; z-index:3000; display:flex; align-items:center; justify-content:center; padding:1rem; background:rgba(25,20,18,.65); }
+.bakery-modal-dialog { position:relative; width:min(100%, 440px); background:#fffaf5; color:#352b28; border-radius:16px; padding:2rem; box-shadow:0 20px 65px rgba(0,0,0,.3); }
+.bakery-modal-close { position:absolute; top:.5rem; right:.75rem; background:none; border:0; font-size:2rem; line-height:1; cursor:pointer; }
+.modal-open { overflow:hidden; }
+.field-error, .form-feedback { color:#9a2730; font-size:.9rem; margin-top:.3rem; }
+.form-success { color:#206c3a; margin-top:.75rem; font-weight:600; }
+.footer-interactive { display:flex; gap:.6rem; align-items:center; flex-wrap:wrap; margin-top:1rem; }
+@media (prefers-reduced-motion:reduce) { .faq-answer, body { transition:none; } }
